@@ -34,7 +34,7 @@ services:
 
   loci-server:
     container_name: loci-server
-    image: trungkieen/loci-server:1.0
+    image: trungkieen/loci-server:1.1
     ports:
       - 8080:8080
     # TOOD: add the env file
@@ -49,7 +49,12 @@ services:
       SPRING_PROFILES_ACTIVE: stage
       LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY_OAUTH2: TRACE
 
-
+    deploy:
+      resources:
+        limits:
+          memory: 3G
+        reservations:
+          memory: 1G
 
   loci-web:
     container_name: loci-web
