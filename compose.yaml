@@ -74,7 +74,7 @@ services:
     ports:
       - 9090:8080
     environment:
-      KC_HOSTNAME: localhost
+      KC_HOSTNAME: ${HOST_IP:localhost}
       KC_HOSTNAME_PORT: 9090
       KC_HOSTNAME_STRICT: false
       KC_HOSTNAME_STRICT_HTTPS: false
@@ -87,6 +87,8 @@ services:
       KC_DB_PASSWORD: admin
     networks:
       - loci-net
+    env_file: .env
+
 
     depends_on:
       - loci-db
